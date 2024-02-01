@@ -12,12 +12,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.Cookie;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.net.http.HttpResponse;
 
 @Controller
 @RequiredArgsConstructor
@@ -30,7 +29,7 @@ public class LoginController {
     public String loginForm(@ModelAttribute("loginForm") LoginForm form){
         return "login/loginForm";
     }
-
+// 주석표시2
 
 //    @PostMapping("/login")
 //    public String login(@Valid @ModelAttribute LoginForm loginForm, BindingResult bindingResult, HttpServletResponse response){
@@ -46,7 +45,7 @@ public class LoginController {
 //            bindingResult.reject("loginFail","아이디 혹은 비밀번호가 맞지 않습니다.");
 //            return "login/loginForm";
 //        }
-//        //로그인 성공 로직 TODO..
+//        //로그인 성공 로직
 //        Cookie idCookie = new Cookie("userId",
 //                String.valueOf(loginUser.getId()));
 //        response.addCookie(idCookie);
