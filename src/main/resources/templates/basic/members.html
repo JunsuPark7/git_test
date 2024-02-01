@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+            href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container" style="max-width: 600px">
+
+    <div class="py-5 text-center">
+        <h2>멤버 목록</h2>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary float-end"
+                    onclick="location.href='addForm.html'"
+                    th:onclick="|location.href='@{/basic/members/add}'|"
+                    type="button">멤버 등록</button>
+        </div>
+    </div>
+
+    <hr class="my-4">
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>멤버명</th>
+                <th>조직</th>
+                <th>직급</th>
+                <th>삭제</th>
+
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="member : ${members}">
+                <td><a href="member.html" th:href="@{/basic/members/{memberId}(memberId=${member.id})}" th:text="${member.id}">회원id</a></td>
+                <td><a href="member.html" th:href="@{|/basic/members/${member.id}|}" th:text="${member.memberName}">멤버명</a></td>
+                <td th:text="${member.group}">10000</td>
+                <td th:text="${member.grade}">10</td>
+                <td>
+                    <form action="member.html" th:action="@{|/basic/members/${member.id}/delete|}" method="post">
+                            <button class="btn btn-danger float-end"
+                                    type="submit">멤버 삭제</button>
+                    </form>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="py-3 text-center">
+        <a href="http://localhost:9090/"><h3>홈 바로가기</h3></a>
+    </div>
+
+</div> <!-- /container -->
+
+</body>
+</html>
+
+<script>
+
+</script>

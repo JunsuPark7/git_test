@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container" style="max-width: 600px">
+
+    <div class="py-5 text-center">
+        <h2>부서 목록</h2>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary float-end"
+                    onclick="location.href='addForm.html'"
+                    th:onclick="|location.href='@{/basic/departments/add}'|"
+                    type="button">부서 등록</button>
+        </div>
+    </div>
+
+    <hr class="my-4">
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>부서명</th>
+                <th>삭제</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="department : ${departments}">
+                <td><a href="department.html" th:href="@{/basic/departments/{departmentId}(departmentId=${department.id})}" th:text="${department.id}">부서id</a></td>
+                <td><a href="department.html" th:href="@{|/basic/departments/${department.id}|}" th:text="${department.departmentName}">부서명</a></td>
+                <td>
+                    <form action="department.html" th:action="@{|/basic/departments/${department.id}/delete|}" method="post">
+                        <button class="btn btn-danger float-end"
+                                type="submit">부서 삭제</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="py-3 text-center">
+        <a href="http://localhost:8080/"><h3>홈 바로가기</h3></a>
+    </div>
+
+</div> <!-- /container -->
+
+</body>
+</html>
+
+<script>
+
+</script>
