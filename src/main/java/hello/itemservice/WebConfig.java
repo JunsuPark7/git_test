@@ -16,6 +16,7 @@ import javax.servlet.Filter;
 public class WebConfig implements WebMvcConfigurer {
 
     //git TEST
+    //LOGIC....
     @Override
     public void addInterceptors(InterceptorRegistry registry){
         registry.addInterceptor(new LogInterceptor())
