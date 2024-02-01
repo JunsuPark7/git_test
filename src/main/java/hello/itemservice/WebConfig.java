@@ -18,6 +18,14 @@ public class WebConfig implements WebMvcConfigurer {
     //git TEST
     //LOGIC....
     //abcd
+
+    //ex...
+
+    //~~~~
+
+    //~~~~logic
+
+
     @Override
     public void addInterceptors(InterceptorRegistry registry){
         registry.addInterceptor(new LogInterceptor())
