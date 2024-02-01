@@ -19,6 +19,7 @@ public class WebConfig implements WebMvcConfigurer {
     //LOGIC....
     //abcd
     //1234
+    //5678
     @Override
     public void addInterceptors(InterceptorRegistry registry){
         registry.addInterceptor(new LogInterceptor())
