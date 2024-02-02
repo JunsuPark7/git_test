@@ -1,7 +1,5 @@
 package hello.itemservice;
 
-import hello.itemservice.web.filter.LogFilter;
-import hello.itemservice.web.filter.LoginCheckFilter;
 import hello.itemservice.web.interceptor.LogInterceptor;
 import hello.itemservice.web.interceptor.LoginCheckInterceptor;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -31,25 +29,6 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
 
-
-
-//    @Bean
-    public FilterRegistrationBean logFilter(){
-        FilterRegistrationBean<Filter> filterFilterRegistrationBean = new FilterRegistrationBean<>();
-        filterFilterRegistrationBean.setFilter(new LogFilter());
-        filterFilterRegistrationBean.setOrder(1);
-        filterFilterRegistrationBean.addUrlPatterns("/*");
-        return filterFilterRegistrationBean;
-    }
-
-//    @Bean
-    public FilterRegistrationBean loginCheckFilter(){
-        FilterRegistrationBean<Filter> filterFilterRegistrationBean = new FilterRegistrationBean<>();
-        filterFilterRegistrationBean.setFilter(new LoginCheckFilter());
-        filterFilterRegistrationBean.setOrder(2);
-        filterFilterRegistrationBean.addUrlPatterns("/*");
-        return filterFilterRegistrationBean;
-    }
 
 
 }

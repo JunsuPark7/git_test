@@ -2,7 +2,6 @@ package hello.itemservice.web.login;
 
 import hello.itemservice.user.domain.LoginService;
 import hello.itemservice.user.domain.User;
-import hello.itemservice.web.session.SessionManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -23,8 +22,6 @@ import javax.validation.Valid;
 @Slf4j
 public class LoginController {
     private final LoginService loginService;
-    private final SessionManager sessionManager;
-
     @GetMapping("/login")
     public String loginForm(@ModelAttribute("loginForm") LoginForm form){
         return "login/loginForm";
@@ -65,14 +62,5 @@ public class LoginController {
         }
         return "redirect:/";
     }
-
-
-
-
-
-
-
-
-
 
 }

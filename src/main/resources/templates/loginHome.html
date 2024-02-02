@@ -11,6 +11,13 @@
         <h2>전남개발공사</h2>
     </div>
     <h4 class="mb-3" th:text="|로그인: ${user.name}|">로그인 사용자 이름</h4>
+    <h4 class="mb-3" th:text="|권한: ${user.type}|">로그인 사용자 권한</h4>
+<!--    사용자 권한에 : ~~~~~ -->
+<!--    권한은 권한 비번 치면 admin 권한으로 업데이트 되는 로직으로 !-->
+<!--    <button class="w-100 btn btn-secondary btn-lg" type="button"-->
+<!--            th:onclick="|location.href='@{/basic/members}'|">-->
+<!--        관리자 권한으로 바꾸기.-->
+<!--    </button>-->
     <hr class="my-4">
     <div class="row">
         <div class="col">
@@ -27,6 +34,8 @@
             </form>
         </div>
     </div>
+
+
     <hr class="my-4">
 </div> <!-- /container -->
 </body>

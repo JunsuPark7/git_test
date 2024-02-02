@@ -2,6 +2,7 @@ package hello.itemservice.web.basic;
 
 import hello.itemservice.user.domain.User;
 import hello.itemservice.user.repository.MemoryUserRepository;
+import hello.itemservice.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -17,7 +18,7 @@ import javax.validation.Valid;
 @RequestMapping("/users")
 public class UserController {
 
-    private final MemoryUserRepository memoryUserRepository;
+    private final UserRepository userRepository;
 
 
     @GetMapping("/add")
@@ -31,7 +32,7 @@ public class UserController {
             return "users/addUserForm";
         }
 
-        memoryUserRepository.save(user);
+        userRepository.save(user);
         return "redirect:/";
     }
 
