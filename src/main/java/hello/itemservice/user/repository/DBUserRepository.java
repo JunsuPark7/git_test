@@ -1,8 +1,7 @@
 package hello.itemservice.user.repository;
 
-import hello.itemservice.member.domain.Member;
-import hello.itemservice.member.repository.DBMemberRepository;
 import hello.itemservice.user.domain.User;
+import hello.itemservice.user.domain.UserType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
@@ -42,11 +41,21 @@ public class DBUserRepository implements UserRepository{
                 .findFirst();
     }
 
-
-
     @Override
     public List<User> findAll() {
         return em.createQuery("select u from User u", User.class)
                 .getResultList();
+    }
+
+    @Override
+    public void authorize(Long id) {
+        User findUser = em.find(User.class, id);
+        findUser.setType(UserType.ADMIN);
+    }
+
+    @Override
+    public void delete(Long id) {
+        User findUser = em.find(User.class, id);
+        em.remove(findUser);
     }
 }

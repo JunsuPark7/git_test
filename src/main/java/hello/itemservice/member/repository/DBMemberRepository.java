@@ -46,7 +46,6 @@ public class DBMemberRepository implements MemberRepository {
 
     public void delete(long memberId){
         Member findMember = em.find(Member.class, memberId);
-
         em.remove(findMember);
     }
 

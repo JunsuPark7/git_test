@@ -12,4 +12,8 @@ public interface UserRepository {
     public Optional<User> findByLoginId(String loginId);
     public List<User> findAll();
 
+    public void authorize(Long id);
+
+    public void delete(Long id);
+
 }

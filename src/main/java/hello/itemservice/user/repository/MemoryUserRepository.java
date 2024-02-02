@@ -1,6 +1,7 @@
 package hello.itemservice.user.repository;
 
 import hello.itemservice.user.domain.User;
+import hello.itemservice.user.domain.UserType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
@@ -36,8 +37,14 @@ public class MemoryUserRepository implements UserRepository{
         return new ArrayList<>(store.values());
     }
 
+    @Override
+    public void authorize(Long id) {
+        User user = findById(id);
+        user.setType(UserType.ADMIN);
+    }
 
-
-
-
+    @Override
+    public void delete(Long id) {
+        store.remove(id);
+    }
 }
