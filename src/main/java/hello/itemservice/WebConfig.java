@@ -14,18 +14,6 @@ import javax.servlet.Filter;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-
-    //git TEST
-    //LOGIC....
-    //abcd
-
-    //ex...
-
-    //~~~~
-
-    //~~~~logic
-
-
     @Override
     public void addInterceptors(InterceptorRegistry registry){
         registry.addInterceptor(new LogInterceptor())
@@ -38,7 +26,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .addPathPatterns("/**")
                 .excludePathPatterns(
                         "/", "/users/add", "/login", "/logout",
-                        "/css/**", "/*.ico", "/error"
+                        "/css/**", "/*.ico", "/error","/index2.html"
                 );
     }
 
