@@ -1,7 +1,6 @@
-package hello.itemservice.web.basic;
+package hello.itemservice.web.controller;
 
 import hello.itemservice.user.domain.User;
-import hello.itemservice.user.repository.MemoryUserRepository;
 import hello.itemservice.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

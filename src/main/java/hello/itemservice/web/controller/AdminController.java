@@ -1,4 +1,4 @@
-package hello.itemservice.web.basic;
+package hello.itemservice.web.controller;
 
 
 import hello.itemservice.member.domain.Member;
@@ -11,12 +11,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Controller
-@RequestMapping("/basic/members")
-public class MemberController {
+@RequestMapping("/admin/members")
+public class AdminController {
 
     private final MemberRepository memberRepository;
 
-    public MemberController(MemberRepository memberRepository) {
+    public AdminController(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 
@@ -24,26 +24,26 @@ public class MemberController {
     public String members(Model model) {
         List<Member> members = memberRepository.findAll();
         model.addAttribute("members", members);
-        return "basic/members";
+        return "admin/members";
     }
 
     @GetMapping("/{memberId}")
     public String member(@PathVariable long memberId, Model model) {
         Member member = memberRepository.findById(memberId);
         model.addAttribute("member", member);
-        return "basic/member";
+        return "admin/member";
     }
 
     @GetMapping("/add")
     public String addForm() {
-        return "basic/addForm";
+        return "admin/addForm";
     }
 
     @PostMapping("/{memberId}/delete")
     public String deleteMember(@PathVariable long memberId, RedirectAttributes redirectAttributes){
         memberRepository.delete(memberId);
         System.out.println("hhhhhhhh");
-        return "redirect:/basic/members";
+        return "redirect:/admin/members";
     }
 
     @PostMapping("/add")
@@ -51,7 +51,7 @@ public class MemberController {
         Member savedMember = memberRepository.save(member);
         redirectAttributes.addAttribute("memberId", savedMember.getId());
         redirectAttributes.addAttribute("status", true);
-        return "redirect:/basic/members/{memberId}";
+        return "redirect:/admin/members/{memberId}";
     }
 
 
@@ -60,15 +60,14 @@ public class MemberController {
     public String editForm(@PathVariable Long memberId, Model model) {
         Member member = memberRepository.findById(memberId);
         model.addAttribute("member", member);
-        return "basic/editForm";
+        return "admin/editForm";
     }
 
     @PostMapping("/{memberId}/edit")
     public String edit(@PathVariable Long memberId, @ModelAttribute Member member) {
         memberRepository.update(memberId, member);
-        return "redirect:/basic/members/{memberId}";
+        return "redirect:/admin/members/{memberId}";
     }
-
 
 
     /**

@@ -1,4 +1,4 @@
-package hello.itemservice.web.basic;
+package hello.itemservice.web.controller;
 
 import hello.itemservice.user.domain.User;
 import hello.itemservice.web.login.LoginForm;

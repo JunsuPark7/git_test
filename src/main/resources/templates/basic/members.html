@@ -1,26 +1,15 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8">
-    <link th:href="@{/css/bootstrap.min.css}"
-            href="../css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+<html th:replace="~{/layout/layout :: Applayout(~{::title}, ~{::section})}" xmlns:th="http://www.thymeleaf.org">
 
-<div class="container" style="max-width: 600px">
+<title>전남개발공사 - 멤버 목록</title>
 
-    <div class="py-5 text-center">
+<section class="container">
+
+    <div class="py-2 text-center">
         <h2>멤버 목록</h2>
     </div>
 
-    <div class="row">
-        <div class="col">
-            <button class="btn btn-primary float-end"
-                    onclick="location.href='addForm.html'"
-                    th:onclick="|location.href='@{/basic/members/add}'|"
-                    type="button">멤버 등록</button>
-        </div>
-    </div>
+
+<!--    검색 기능 구현.-->
 
     <hr class="my-4">
     <div>
@@ -31,40 +20,32 @@
                 <th>멤버명</th>
                 <th>조직</th>
                 <th>직급</th>
-                <th>삭제</th>
-
-
-
+                <th>보기</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="member : ${members}">
-                <td><a href="member.html" th:href="@{/basic/members/{memberId}(memberId=${member.id})}" th:text="${member.id}">회원id</a></td>
-                <td><a href="member.html" th:href="@{|/basic/members/${member.id}|}" th:text="${member.memberName}">멤버명</a></td>
+                <td th:text="${member.id}">회원id</td>
+                <td th:text="${member.memberName}">멤버명</td>
                 <td th:text="${member.group}">10000</td>
                 <td th:text="${member.grade}">10</td>
                 <td>
-                    <form action="member.html" th:action="@{|/basic/members/${member.id}/delete|}" method="post">
-                            <button class="btn btn-danger float-end"
-                                    type="submit">멤버 삭제</button>
-                    </form>
+                    <button class="btn btn-success float-end" type="button"
+                            th:onclick="|location.href='@{/basic/members/{id}(id=${member.id})}'|"
+                    >상세보기</button>
+
+<!--                    <button class="w-100 btn btn-secondary btn-lg" type="button" th:case="'USER'"-->
+<!--                            th:onclick="|location.href='@{/basic/members}'|">-->
+<!--                        조직도 보기-->
+<!--                    </button>-->
                 </td>
 
             </tr>
             </tbody>
         </table>
     </div>
+</section> <!-- /container -->
 
 
-    <div class="py-3 text-center">
-        <a href="http://localhost:9090/"><h3>홈 바로가기</h3></a>
-    </div>
 
-</div> <!-- /container -->
-
-</body>
 </html>
-
-<script>
-
-</script>

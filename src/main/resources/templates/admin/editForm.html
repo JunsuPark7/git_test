@@ -1,21 +1,10 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8">
-    <link th:href="@{/css/bootstrap.min.css}"
-          href="../css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .container {
-            max-width: 560px;
-        }
-    </style>
-</head>
-<body>
 
-<div class="container">
+<html th:replace="~{/layout/layout :: Applayout(~{::title}, ~{::section})}" xmlns:th="http://www.thymeleaf.org">
+<title>전남개발공사 - 멤버수정</title>
+<section class="container">
 
-    <div class="py-5 text-center">
-        <h2>멤버 수정 폼</h2>
+    <div class="py-2 text-center">
+        <h2>멤버 수정</h2>
     </div>
 
     <form action="member.html" th:action method="post">
@@ -45,13 +34,13 @@
             <div class="col">
                 <button class="w-100 btn btn-secondary btn-lg"
                         onclick="location.href='member.html'"
-                        th:onclick="|location.href='@{/basic/members/{memberId}(memberId=${member.id})}'|"
+                        th:onclick="|location.href='@{/admin/members/{memberId}(memberId=${member.id})}'|"
                         type="button">취소</button>
             </div>
         </div>
 
     </form>
 
-</div> <!-- /container -->
-</body>
+</section> <!-- /container -->
+
 </html>

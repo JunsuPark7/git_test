@@ -1,8 +1,7 @@
-package hello.itemservice.web.basic;
+package hello.itemservice.web.controller;
 
 import hello.itemservice.depart.domain.Department;
 import hello.itemservice.depart.repository.DepartmentRepository;
-import hello.itemservice.member.domain.Member;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

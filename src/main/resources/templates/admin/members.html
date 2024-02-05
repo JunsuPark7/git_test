@@ -1,0 +1,56 @@
+<html th:replace="~{/layout/layout :: Applayout(~{::title}, ~{::section})}" xmlns:th="http://www.thymeleaf.org">
+
+<title>전남개발공사 - 멤버 목록</title>
+
+<section class="container">
+
+    <div class="py-2 text-center">
+        <h2>멤버 목록</h2>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary float-end"
+                    onclick="location.href='addForm.html'"
+                    th:onclick="|location.href='@{/admin/members/add}'|"
+                    type="button">멤버 등록</button>
+        </div>
+    </div>
+
+    <hr class="my-4">
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>멤버명</th>
+                <th>조직</th>
+                <th>직급</th>
+                <th>삭제</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="member : ${members}">
+                <td><a href="member.html" th:href="@{/admin/members/{memberId}(memberId=${member.id})}" th:text="${member.id}">회원id</a></td>
+                <td><a href="member.html" th:href="@{|/admin/members/${member.id}|}" th:text="${member.memberName}">멤버명</a></td>
+                <td th:text="${member.group}">10000</td>
+                <td th:text="${member.grade}">10</td>
+                <td>
+                    <form action="member.html" th:action="@{|/admin/members/${member.id}/delete|}" method="post">
+                            <button class="btn btn-danger float-end"
+                                    type="submit">멤버 삭제</button>
+                    </form>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+</section> <!-- /container -->
+
+
+
+</html>

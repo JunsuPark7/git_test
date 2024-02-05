@@ -6,10 +6,12 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
 <!--    <link th:href="@{/css/fontawesome.all.min.css}" href="/css/fontawesome.css" rel="stylesheet">-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
-    <link th:href="@{/css/layout.css}" href="/css/layout.css" rel="stylesheet">
     <link th:href="@{/css/bootstrap.min.css}" href="/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/layout.css}" href="/css/layout.css" rel="stylesheet">
+    <link th:href="@{/css/common.css}" href="/css/common.css" rel="stylesheet">
 
 
     <script th:src="@{/js/jquery.js}" type="text/javascript" defer></script>
@@ -25,9 +27,9 @@
 
     <div class="app-wrapper">
         <header class="app-header">
-            <button class="btn-back"><i class="fa fa-angle-left"></i></button>
-            <div class="header-title">전남개발공사</div>
-            <button data-toggle="sidebar" class="btn-sidebar" title="Toggle sidebar"><i class="fa fa-columns"></i></button>
+            <button class="btn-back" onclick="window.history.back();"><i class="fa fa-angle-left"></i></button>
+            <button class="btn-back" onclick="window.location.href = '/'"><div class="header-title">전남개발공사</div></button>
+            <button data-toggle="sidebar" class="btn-sidebar" title="Toggle sidebar"><i class="fa fa-bars"></i></button>
         </header>
 
         <div class="app-body">
@@ -96,11 +98,11 @@
 
         <footer class="app-mobile-footer">
             <div class="footer-menu">
-                <button class="footer-menu__item"><i class="fa fa-home"></i></button>
+                <button onclick="window.location.href = '/'" class="footer-menu__item"><i class="fa fa-home"></i></button>
                 <button class="footer-menu__item"><i class="fa fa-flag-o"></i></button>
                 <button class="footer-menu__item"><i class="fa fa-user"></i></button>
                 <button class="footer-menu__item"><i class="fa fa-envelope"></i></button>
-                <button class="footer-menu__item"><i class="fa fa-bars"></i></button>
+                <button class="footer-menu__item"><i class="fas fa-ellipsis-v"></i></button>
             </div>
         </footer>
     </div>

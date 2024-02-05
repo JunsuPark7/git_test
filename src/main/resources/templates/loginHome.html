@@ -1,13 +1,6 @@
-<!DOCTYPE HTML>
 <html th:replace="~{layout/layout :: Applayout(~{::title}, ~{::section})}" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8">
 
-    <title>전남개발공사 - 홈</title>
-</head>
-
-<body>
-
+<title>전남개발공사 - 홈</title>
 
 <section class="container">
     <div class="py-5 text-center">
@@ -44,7 +37,7 @@
 
 <!--            관리자 이면 멤버 관리.-->
             <button class="w-100 btn btn-secondary btn-lg" type="button" th:case="'ADMIN'"
-                    th:onclick="|location.href='@{/basic/members}'|"
+                    th:onclick="|location.href='@{/admin/members}'|"
             >
                 멤버 관리
             </button>
@@ -70,7 +63,4 @@
 
 </section> <!-- /container -->
 
-
-
-</body>
 </html>

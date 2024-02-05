@@ -17,7 +17,7 @@
         <div class="col">
             <button class="btn btn-primary float-end"
                     onclick="location.href='addForm.html'"
-                    th:onclick="|location.href='@{/basic/departments/add}'|"
+                    th:onclick="|location.href='@{/admin/departments/add}'|"
                     type="button">부서 등록</button>
         </div>
     </div>
@@ -34,10 +34,10 @@
             </thead>
             <tbody>
             <tr th:each="department : ${departments}">
-                <td><a href="department.html" th:href="@{/basic/departments/{departmentId}(departmentId=${department.id})}" th:text="${department.id}">부서id</a></td>
-                <td><a href="department.html" th:href="@{|/basic/departments/${department.id}|}" th:text="${department.departmentName}">부서명</a></td>
+                <td><a href="department.html" th:href="@{/admin/departments/{departmentId}(departmentId=${department.id})}" th:text="${department.id}">부서id</a></td>
+                <td><a href="department.html" th:href="@{|/admin/departments/${department.id}|}" th:text="${department.departmentName}">부서명</a></td>
                 <td>
-                    <form action="department.html" th:action="@{|/basic/departments/${department.id}/delete|}" method="post">
+                    <form action="department.html" th:action="@{|/admin/departments/${department.id}/delete|}" method="post">
                         <button class="btn btn-danger float-end"
                                 type="submit">부서 삭제</button>
                     </form>
