@@ -40,7 +40,7 @@ public class MemoryUserRepository implements UserRepository{
     @Override
     public void authorize(Long id) {
         User user = findById(id);
-        user.setType(UserType.ADMIN);
+        user.setType(UserType.USER);
     }
 
     @Override

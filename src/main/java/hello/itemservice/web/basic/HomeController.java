@@ -31,7 +31,10 @@ public class HomeController {
         return "loginHome";
     }
 
-
+    @GetMapping("/layout")
+    public String homelayout(){
+        return "layout/layout";
+    }
 
 
 

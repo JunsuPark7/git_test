@@ -1,45 +1,55 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{layout/layout :: Applayout(~{::title}, ~{::section})}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <link th:href="@{/css/bootstrap.min.css}"
-          href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <title>전남개발공사 - 홈</title>
 </head>
+
 <body>
-<div class="container" style="max-width: 600px">
+
+
+<section class="container">
     <div class="py-5 text-center">
-        <h2>전남개발공사</h2>
+        <h2>메인 페이지</h2>
     </div>
     <h4 class="mb-3" th:text="|로그인: ${user.name}|">로그인 사용자 이름</h4>
     <h4 class="mb-3" th:text="|권한: ${user.type}|">로그인 사용자 권한</h4>
+
 <!--    사용자 권한에 : ~~~~~ -->
 <!--    권한은 권한 비번 치면 admin 권한으로 업데이트 되는 로직으로 !-->
 
-    <form th:action="@{/users/authorize}" method="post" th:object="${user}">
-        <!-- 다른 필드들을 여기에 추가할 수 있음 -->
 
-<!--        api를 설계를 해서 바꾸는게 맞지만 hidden 으로 넘겨볼가?-->
+
+<!--    유저 권한이면 삭제? (유저 일때 안보이고. 관리자 권한일때...... 유저 권한으로 바꾸기?-->
+    <form th:action="@{/users/authorize}" method="post" th:object="${user}" th:if="${#strings.toString(user.type) eq 'ADMIN'}">
         <input type="hidden" th:name="id" th:value="${user.id}" />
-
         <button class="w-100 btn btn-primary btn-lg" type="submit">
-            관리자 권한으로 바꾸기.
+            유저 권한으로 바꾸기.
         </button>
     </form>
+
+    <form th:action="@{/users/authorize}" method="post" th:object="${user}" th:if="${user.type eq 'ADMIN'}">
+        <input type="hidden" th:name="id" th:value="${user.id}" />
+        <button class="w-100 btn btn-primary btn-lg" type="submit">
+            유저 권한으로 바꾸기.
+        </button>
+    </form>
+
+
     <hr class="my-4">
     <div class="row">
-        <div class="col" th:if="${user.type == 'ADMIN'}">
+
+        <div class="col" th:switch="${#strings.toString(user.type)}">
 
 <!--            관리자 이면 멤버 관리.-->
-            <button class="w-100 btn btn-secondary btn-lg" type="button"
+            <button class="w-100 btn btn-secondary btn-lg" type="button" th:case="'ADMIN'"
                     th:onclick="|location.href='@{/basic/members}'|"
             >
                 멤버 관리
             </button>
-        </div>
-        <div class="col" th:unless="${user.type == 'ADMIN'}">
-
             <!--            일반 유저 이면 멤버 보기만.!-->
-            <button class="w-100 btn btn-secondary btn-lg" type="button"
+            <button class="w-100 btn btn-secondary btn-lg" type="button" th:case="'USER'"
                     th:onclick="|location.href='@{/basic/members}'|"
             >
                 조직도 보기
@@ -55,8 +65,12 @@
         </div>
     </div>
 
-
     <hr class="my-4">
-</div> <!-- /container -->
+
+
+</section> <!-- /container -->
+
+
+
 </body>
 </html>

@@ -27,4 +27,7 @@ public class User {
     public User() {
         this.type = UserType.USER;
     }
+
+
+
 }

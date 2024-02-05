@@ -50,7 +50,7 @@ public class DBUserRepository implements UserRepository{
     @Override
     public void authorize(Long id) {
         User findUser = em.find(User.class, id);
-        findUser.setType(UserType.ADMIN);
+        findUser.setType(UserType.USER);
     }
 
     @Override

@@ -46,7 +46,8 @@ public class UserController {
         userRepository.authorize(findUser.getId());
 
         model.addAttribute("user",findUser);
-        return "loginHome";
+        return "loginHome"; // loginHome으로 리다이렉트
+
     }
 
 
