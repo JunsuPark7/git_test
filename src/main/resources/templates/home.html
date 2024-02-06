@@ -1,69 +1,66 @@
+<html th:replace="~{layout/layout :: Applayout(~{::title}, ~{::section})}" xmlns:th="http://www.thymeleaf.org">
 
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8" />
-    <title>전남개발공사</title>
+<title>전남개발공사 - 홈</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="./css/login_home.css" rel="stylesheet" />
-</head>
-
-<script src="js/login_home.js"></script>
-
-<body>
-
-<img class="wave" src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/wave.png">
-<div class="container">
-    <div class="img">
-        <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/bg.svg">
+<section class="container">
+    <div class="py-5 text-center">
+        <h2>메인 페이지</h2>
     </div>
-    <div class="login-content">
-        <form action="item.html" th:action="@{/login}" th:object="${loginForm}" method="post">
-            <h2 class="title">전남개발공사 <br> 조직도 <span style="color:#61BB47">L</span>O<span style="color:#026EB9">G</span>IN</h2>
-            <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/avatar.svg">
-            <div th:if="${#fields.hasGlobalErrors()}">
-                <p class="field-error" style="color:red;" th:each="err : ${#fields.globalErrors()}"
-                   th:text="${err}">전체 오류 메시지</p>
-            </div>
-            <div class="input-div one">
-                <div class="i">
-                    <i class="fas fa-user"></i>
-                </div>
+    <h4 class="mb-3" th:text="|로그인: ${user.name}|">로그인 사용자 이름</h4>
+    <h4 class="mb-3" th:text="|권한: ${user.type}|">로그인 사용자 권한</h4>
 
-                <div class="div">
-                    <input type="text" id="loginId" th:field="*{loginId}" class="input"
-                           th:errorclass="field-error"
-                           placeholder="직원 아이디"
-                    >
-                    <div class="field-error" th:errors="*{loginId}" />
+<!--    사용자 권한에 : ~~~~~ -->
+<!--    권한은 권한 비번 치면 admin 권한으로 업데이트 되는 로직으로 !-->
 
-                </div>
-            </div>
-            <div class="input-div pass">
-                <div class="i">
-                    <i class="fas fa-lock"></i>
-                </div>
-                <div class="div">
-                    <input type="password" id="password" th:field="*{password}"
-                           class="input"
-                           placeholder="비밀번호"
-                           th:errorclass="field-error">
-                    <div class="field-error" th:errors="*{password}" />
 
-                </div>
-            </div>
-            <a href="#" style="margin-top:8px;">비밀번호 찾기</a>
-            <input type="submit" class="btn" value="로그인">
-            <input type="button"
-                   class="btn"
-                   th:onclick="|location.href='@{/users/add}'|"
-                   value="회원가입">
-        </form>
+
+<!--    유저 권한이면 삭제? (유저 일때 안보이고. 관리자 권한일때...... 유저 권한으로 바꾸기?-->
+    <form th:action="@{/users/authorize}" method="post" th:object="${user}" th:if="${#strings.toString(user.type) eq 'ADMIN'}">
+        <input type="hidden" th:name="id" th:value="${user.id}" />
+        <button class="w-100 btn btn-primary btn-lg" type="submit">
+            유저 권한으로 바꾸기.
+        </button>
+    </form>
+
+    <form th:action="@{/users/authorize}" method="post" th:object="${user}" th:if="${user.type eq 'ADMIN'}">
+        <input type="hidden" th:name="id" th:value="${user.id}" />
+        <button class="w-100 btn btn-primary btn-lg" type="submit">
+            유저 권한으로 바꾸기.
+        </button>
+    </form>
+
+
+    <hr class="my-4">
+    <div class="row">
+
+        <div class="col" th:switch="${#strings.toString(user.type)}">
+
+<!--            관리자 이면 멤버 관리.-->
+            <button class="w-100 btn btn-secondary btn-lg" type="button" th:case="'ADMIN'"
+                    th:onclick="|location.href='@{/admin/members}'|"
+            >
+                멤버 관리
+            </button>
+            <!--            일반 유저 이면 멤버 보기만.!-->
+            <button class="w-100 btn btn-secondary btn-lg" type="button" th:case="'USER'"
+                    th:onclick="|location.href='@{/basic/members}'|"
+            >
+                조직도 보기
+            </button>
+        </div>
+
+        <div class="col">
+            <form th:action="@{/logout}" method="post">
+                <button class="w-100 btn btn-dark btn-lg" type="submit">
+                    로그아웃
+                </button>
+            </form>
+        </div>
     </div>
-</div>
 
-</body>
+    <hr class="my-4">
+
+
+</section> <!-- /container -->
+
 </html>

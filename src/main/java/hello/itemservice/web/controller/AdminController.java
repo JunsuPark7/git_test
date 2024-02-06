@@ -39,12 +39,6 @@ public class AdminController {
         return "admin/addForm";
     }
 
-    @PostMapping("/{memberId}/delete")
-    public String deleteMember(@PathVariable long memberId, RedirectAttributes redirectAttributes){
-        memberRepository.delete(memberId);
-        System.out.println("hhhhhhhh");
-        return "redirect:/admin/members";
-    }
 
     @PostMapping("/add")
     public String addMemberV6(Member member, RedirectAttributes redirectAttributes) {
@@ -67,6 +61,11 @@ public class AdminController {
     public String edit(@PathVariable Long memberId, @ModelAttribute Member member) {
         memberRepository.update(memberId, member);
         return "redirect:/admin/members/{memberId}";
+    }
+    @PostMapping("/{memberId}/delete")
+    public String deleteMember(@PathVariable long memberId, RedirectAttributes redirectAttributes){
+        memberRepository.delete(memberId);
+        return "redirect:/admin/members";
     }
 
 

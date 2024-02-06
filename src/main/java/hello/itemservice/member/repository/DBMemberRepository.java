@@ -1,6 +1,8 @@
 package hello.itemservice.member.repository;
 
 import hello.itemservice.member.domain.Member;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -9,10 +11,10 @@ import java.util.List;
 
 @Repository
 @Transactional
+@Slf4j
 public class DBMemberRepository implements MemberRepository {
 
     private final EntityManager em;
-//    private static long sequence = 0L; //static
 
     public DBMemberRepository(EntityManager em) {
         this.em = em;
@@ -27,7 +29,14 @@ public class DBMemberRepository implements MemberRepository {
         return em.find(Member.class, id);
     }
 
-
+    @Override
+    public List<Member> findByName(String name) {
+        log.info("string name: {}",name);
+        String query = "select m from Member m where m.memberName = :name";
+        return em.createQuery(query, Member.class)
+                .setParameter("name",name)
+                .getResultList();
+    }
 
 
     public List<Member> findAll() {

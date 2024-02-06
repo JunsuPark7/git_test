@@ -23,19 +23,13 @@ public class HomeController {
             Model model
     ){
         if(loginUser == null){
-            return "home";
+            return "login";
         }
 
         //세션이 유지되면 로그인으로 이동.
         model.addAttribute("user", loginUser);
-        return "loginHome";
+        return "home";
     }
-
-    @GetMapping("/layout")
-    public String homelayout(){
-        return "layout/layout";
-    }
-
 
 
 

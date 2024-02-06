@@ -7,8 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//사용x
 //@Repository
-public class MemoryMemberRepository implements MemberRepository {
+public class MemoryMemberRepository{
 
     private static final Map<Long, Member> store = new HashMap<>(); //static
     private static long sequence = 0L; //static

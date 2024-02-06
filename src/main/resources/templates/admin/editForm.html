@@ -1,20 +1,20 @@
 
 <html th:replace="~{/layout/layout :: Applayout(~{::title}, ~{::section})}" xmlns:th="http://www.thymeleaf.org">
-<title>전남개발공사 - 멤버수정</title>
+<title>전남개발공사 - 직원수정</title>
 <section class="container">
 
     <div class="py-2 text-center">
-        <h2>멤버 수정</h2>
+        <h2>직원 수정</h2>
     </div>
 
     <form action="member.html" th:action method="post">
         <div>
-            <label for="id">멤버 ID</label>
+            <label for="id">직원 ID</label>
             <input type="text" id="id" name="id" class="form-control" value="1" th:value="${member.id}" readonly>
         </div>
         <div>
-            <label for="memberName">멤버명</label>
-            <input type="text" id="memberName" name="memberName" class="form-control" value="멤버A" th:value="${member.memberName}">
+            <label for="memberName">직원명</label>
+            <input type="text" id="memberName" name="memberName" class="form-control" value="직원A" th:value="${member.memberName}">
         </div>
         <div>
             <label for="group">조직</label>

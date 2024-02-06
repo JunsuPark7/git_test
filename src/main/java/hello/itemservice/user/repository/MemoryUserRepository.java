@@ -3,13 +3,13 @@ package hello.itemservice.user.repository;
 import hello.itemservice.user.domain.User;
 import hello.itemservice.user.domain.UserType;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+//사용 x
 //@Repository
 @Slf4j
-public class MemoryUserRepository implements UserRepository{
+public class MemoryUserRepository{
 
 
     private static Map<Long, User> store = new HashMap<>();
@@ -37,13 +37,13 @@ public class MemoryUserRepository implements UserRepository{
         return new ArrayList<>(store.values());
     }
 
-    @Override
+
     public void authorize(Long id) {
         User user = findById(id);
         user.setType(UserType.USER);
     }
 
-    @Override
+
     public void delete(Long id) {
         store.remove(id);
     }

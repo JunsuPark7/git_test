@@ -5,12 +5,14 @@ import hello.itemservice.member.domain.Member;
 import java.util.List;
 
 public interface MemberRepository {
-    public Member save(Member item);
-    public Member findById(Long id);
+    Member save(Member item);
+    Member findById(Long id);
 
-    public List<Member> findAll();
+    List<Member> findByName(String name);
 
-    public void update(Long itemId, Member updateParam);
+    List<Member> findAll();
 
-    public void delete(long itemId);
+    void update(Long itemId, Member updateParam);
+
+    void delete(long itemId);
 }

@@ -2,16 +2,16 @@ package hello.itemservice.web.controller;
 
 import hello.itemservice.member.domain.Member;
 import hello.itemservice.member.repository.MemberRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
 @RequestMapping("/basic/members")
+@Slf4j
 public class MemberController {
     private final MemberRepository memberRepository;
 
@@ -28,6 +28,14 @@ public class MemberController {
     }
 
 
+    @PostMapping("/")
+    public String member(@ModelAttribute Member member,Model model) {
+        List<Member> members = memberRepository.findByName(member.getMemberName());
+        model.addAttribute("members", members);
+        return "basic/members";
+    }
+
+
 
     @GetMapping("/{memberId}")
     public String member(@PathVariable long memberId, Model model) {
@@ -35,6 +43,11 @@ public class MemberController {
         model.addAttribute("member", member);
         return "basic/member";
     }
+
+
+
+
+
 
 
 }

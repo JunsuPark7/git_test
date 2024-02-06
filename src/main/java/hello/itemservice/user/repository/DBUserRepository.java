@@ -24,7 +24,7 @@ public class DBUserRepository implements UserRepository{
     @Override
     public User save(User user) {
         em.persist(user);
-        log.info("save: user={}", user);
+        log.info("save(회원가입): user={}", user);
         User savedUser = em.find(User.class, user.getId());
         return savedUser;
     }
@@ -51,6 +51,12 @@ public class DBUserRepository implements UserRepository{
     public void authorize(Long id) {
         User findUser = em.find(User.class, id);
         findUser.setType(UserType.USER);
+    }
+
+    @Override
+    public void changePassword(Long id,String password) {
+        User user = em.find(User.class, id);
+        user.setPassword(password);
     }
 
     @Override

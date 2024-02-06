@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -36,7 +35,7 @@ public class LoginController {
                           HttpServletRequest request){
 
         if(bindingResult.hasErrors()){
-            return "/home";
+            return "/login";
         }
 
         User loginUser = loginService.login(loginForm.getLoginId(), loginForm.getPassword());
@@ -44,8 +43,9 @@ public class LoginController {
 
         if(loginUser == null){
             bindingResult.reject("loginFail","아이디 혹은 비밀번호가 맞지 않습니다.");
-            return "/home";
+            return "/login";
         }
+
         //HttpServletRequest에 세션을 생성 할 수 있음.
         //세션이 있으면 있는 세션 반환, 없으면 신규 세션 생성.
         // 세션이 없으면 새로운 세션을 생성해서 반환!!

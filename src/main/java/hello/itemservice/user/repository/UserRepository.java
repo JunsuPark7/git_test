@@ -7,13 +7,15 @@ import java.util.Optional;
 
 public interface UserRepository {
 
-    public User save(User user);
-    public User findById(Long id);
-    public Optional<User> findByLoginId(String loginId);
-    public List<User> findAll();
+    User save(User user);
+    User findById(Long id);
+    Optional<User> findByLoginId(String loginId);
+    List<User> findAll();
 
-    public void authorize(Long id);
+    void authorize(Long id);
 
-    public void delete(Long id);
+    void changePassword(Long id,String password);
+
+    void delete(Long id);
 
 }

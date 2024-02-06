@@ -116,11 +116,8 @@
   /* Theming */
   font-size: 1.25rem;
 }
-@media (min-width: 480px) and (min-height: 480px) {
-  .app-header .btn-back {
-    display: none;
-  }
-}
+
+
 
 .app-body {
   display: flex;
@@ -129,22 +126,14 @@
   position: relative;
   overflow: hidden;
 }
-@media (min-width: 480px) and (min-height: 480px) {
-  .app-body {
-    height: auto;
-    flex: 1 0 auto;
-  }
-}
+
 
 .app-main {
   overflow-x: hidden;
   overflow-y: auto;
 }
-@media (min-width: 480px) and (min-height: 480px) {
-  .app-main {
-    flex: 1 0 auto;
-  }
-}
+
+
 
 .page-content {
   /* Theming */
