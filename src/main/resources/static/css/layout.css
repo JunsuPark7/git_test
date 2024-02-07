@@ -111,10 +111,18 @@
   color: #fff;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
   padding: 0 1rem;
+
+
 }
+
+
+
+
+
+
 .app-header .header-title {
   /* Theming */
-  font-size: 1.25rem;
+  font-size: 1.5rem;
 }
 
 
@@ -265,11 +273,16 @@
   background: #fff;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
   padding: 0.5em;
+
+
 }
 
 .footer-menu {
   display: flex;
   gap: 0.5rem;
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
 }
 
 .footer-menu__item {
@@ -296,17 +309,7 @@
 .footer-menu__item:active {
   background: #eee;
 }
-/*
-@media (min-width: 480px) and (min-height: 480px) {
-  .app-mobile-footer {
-    display: none;
-    position: static;
-  }
 
-  .app-footer {
-    display: block;
-  }
-} */
 /**********************
  * Dummy content
  **********************/

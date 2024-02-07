@@ -26,25 +26,25 @@
     </form>
 
     <hr class="my-4">
-    <div>
+    <div class="text-center align-middle">
         <table class="table">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>직원명</th>
-                <th>조직</th>
-                <th>직급</th>
-                <th>보기</th>
+                <th th:text="#{label.member.id}">ID</th>
+                <th th:text="#{label.member.name}">직원명</th>
+                <th th:text="#{label.member.group}">조직</th>
+                <th th:text="#{label.member.grade}">직급</th>
+                <th class="text-center">보기</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="member : ${members}">
-                <td th:text="${member.id}">회원id</td>
-                <td th:text="${member.memberName}">직원명</td>
-                <td th:text="${member.group}">10000</td>
-                <td th:text="${member.grade}">10</td>
-                <td>
-                    <button class="btn btn-success float-end" type="button"
+                <td class="align-middle" th:text="${member.id}">회원id</td>
+                <td class="align-middle" th:text="${member.memberName}">직원명</td>
+                <td class="align-middle" th:text="${member.group}">10000</td>
+                <td class="align-middle" th:text="${member.grade}">10</td>
+                <td class="align-middle text-center">
+                    <button class="btn btn-success text-center" type="button"
                             th:onclick="|location.href='@{/basic/members/{id}(id=${member.id})}'|"
                     >상세보기</button>
                 </td>

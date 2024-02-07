@@ -8,18 +8,29 @@
 
     <h4 class="mb-3">직원 입력</h4>
 
-    <form action="member.html" th:action method="post">
+    <form action="member.html" th:action method="post" th:object="${member}">
+
+
+        <div th:if="${#fields.hasGlobalErrors()}">
+            <p class="field-error" th:each="err : ${#fields.globalErrors()}"
+               th:text="${err}">전체 오류 메시지</p>
+        </div>
+
+
         <div>
             <label for="memberName">직원명</label>
-            <input type="text" id="memberName" name="memberName" class="form-control" placeholder="이름을 입력하세요">
+            <input type="text" id="memberName" th:field="*{memberName}" th:errorclass="field-error" class="form-control" placeholder="이름을 입력하세요">
+            <p class="field-error" th:errors="*{memberName}">직원명에러</p>
         </div>
         <div>
             <label for="group">조직</label>
-            <input type="text" id="group" name="group" class="form-control" placeholder="조직을 입력하세요">
+            <input type="text" id="group" th:field="*{group}" th:errorclass="field-error" class="form-control" placeholder="조직을 입력하세요">
+            <p class="field-error" th:errors="*{group}">직원명에러</p>
         </div>
         <div>
             <label for="grade">직급</label>
-            <input type="text" id="grade" name="grade" class="form-control" placeholder="직급을 입력하세요">
+            <input type="text" id="grade" th:field="*{grade}" th:errorclass="field-error" class="form-control" placeholder="직급을 입력하세요">
+            <p class="field-error" th:errors="*{grade}">직원명에러</p>
         </div>
 
         <hr class="my-4">
@@ -36,6 +47,11 @@
             </div>
         </div>
     </form>
+
+
+
+
+
 </section> <!-- /container -->
 
 </html>

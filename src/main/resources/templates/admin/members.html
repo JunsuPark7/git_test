@@ -22,22 +22,22 @@
         <table class="table">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>직원명</th>
-                <th>조직</th>
-                <th>직급</th>
-                <th>삭제</th>
+                <th th:text="#{label.member.id}">ID</th>
+                <th th:text="#{label.member.name}">직원명</th>
+                <th th:text="#{label.member.group}">조직</th>
+                <th th:text="#{label.member.grade}">직급</th>
+                <th class="text-center">삭제</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="member : ${members}">
-                <td><a href="member.html" th:href="@{/admin/members/{memberId}(memberId=${member.id})}" th:text="${member.id}">회원id</a></td>
-                <td><a href="member.html" th:href="@{|/admin/members/${member.id}|}" th:text="${member.memberName}">직원명</a></td>
-                <td th:text="${member.group}">10000</td>
-                <td th:text="${member.grade}">10</td>
-                <td>
+                <td class="align-middle"><a href="member.html" th:href="@{/admin/members/{memberId}(memberId=${member.id})}" th:text="${member.id}">회원id</a></td>
+                <td class="align-middle"><a href="member.html" th:href="@{|/admin/members/${member.id}|}" th:text="${member.memberName}">직원명</a></td>
+                <td class="align-middle" th:text="${member.group}">10000</td>
+                <td class="align-middle" th:text="${member.grade}">10</td>
+                <td class="text-center">
                     <form action="member.html" th:action="@{|/admin/members/${member.id}/delete|}" method="post">
-                            <button class="btn btn-danger float-end"
+                            <button class="btn btn-danger text-center"
                                     type="submit">직원 삭제</button>
                     </form>
                 </td>

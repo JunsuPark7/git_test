@@ -10,19 +10,19 @@
     <h2 th:if="${param.status}" th:text="'저장 완료'"></h2>
 
     <div>
-        <label for="memberId">직원 ID</label>
+        <label for="memberId" th:text="#{label.member.id}">직원 ID</label>
         <input type="text" id="memberId" name="memberId" class="form-control" value="1" th:value="${member.id}" readonly>
     </div>
     <div>
-        <label for="memberName">직원명</label>
+        <label for="memberName" th:text="#{label.member.name}">직원명</label>
         <input type="text" id="memberName" name="memberName" class="form-control" value="직원A" th:value="${member.memberName}" readonly>
     </div>
     <div>
-        <label for="group">조직</label>
+        <label for="group" th:text="#{label.member.group}">조직</label>
         <input type="text" id="group" name="group" class="form-control" value="10000" th:value="${member.group}" readonly>
     </div>
     <div>
-        <label for="grade">직급</label>
+        <label for="grade" th:text="#{label.member.grade}">직급</label>
         <input type="text" id="grade" name="grade" class="form-control" value="10" th:value="${member.grade}" readonly>
     </div>
 
@@ -33,7 +33,7 @@
             <button class="w-100 btn btn-primary btn-lg"
                     onclick="location.href='editForm.html'"
                     th:onclick="|location.href='@{/admin/members/{memberId}/edit(memberId=${member.id})}'|"
-                    type="button">직원 수정</button>
+                    type="button">직원수정</button>
         </div>
         <div class="col">
             <button class="w-100 btn btn-secondary btn-lg"

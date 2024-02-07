@@ -3,8 +3,14 @@ package hello.itemservice.web.controller;
 
 import hello.itemservice.member.domain.Member;
 import hello.itemservice.member.repository.MemberRepository;
+import hello.itemservice.user.domain.User;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -12,6 +18,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/admin/members")
+@Slf4j
 public class AdminController {
 
     private final MemberRepository memberRepository;
@@ -35,19 +42,44 @@ public class AdminController {
     }
 
     @GetMapping("/add")
-    public String addForm() {
+    public String addForm(Model model) {
+        model.addAttribute("member", new Member());
         return "admin/addForm";
     }
 
-
     @PostMapping("/add")
-    public String addMemberV6(Member member, RedirectAttributes redirectAttributes) {
+    public String addMemberV6(@ModelAttribute Member member, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+
+        log.info("member777={}",member);
+
+//        null값 체크!
+        if(!StringUtils.hasText(member.getMemberName())){
+            bindingResult.addError(new FieldError("member", "memberName","직원 이름은 필수입니다."));
+        }
+
+        if(member.getGroup() == null || member.getGroup().length() >= 5){
+            bindingResult.addError(new FieldError("member", "group", member.getGroup(), false, null,null, "부서 이름은 4글자 이하 여야 합니다."));
+        }
+
+        log.info("member grade={}",member.getGrade());
+        if(member.getGrade() == null){
+            bindingResult.addError(new FieldError("member","grade","직급은 필수입니다."));
+            log.info("===========");
+        }
+
+
+        if(bindingResult.hasErrors()){
+            log.info("error={}",bindingResult);
+            return "admin/addForm";
+        }
+
+
+
         Member savedMember = memberRepository.save(member);
         redirectAttributes.addAttribute("memberId", savedMember.getId());
         redirectAttributes.addAttribute("status", true);
         return "redirect:/admin/members/{memberId}";
     }
-
 
 
     @GetMapping("/{memberId}/edit")

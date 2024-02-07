@@ -1,9 +1,13 @@
 package hello.itemservice.member.domain;
 
 
+import lombok.Data;
+import lombok.ToString;
+
 import javax.persistence.*;
 
 @Entity
+@Data
 public class Member {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -11,6 +11,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Optional;
 
@@ -98,11 +100,18 @@ public class UserController {
 
 
     @PostMapping("/authorize")
-    public String authorize(@RequestParam("id") Long id, Model model){
+    public String authorize(@RequestParam("id") Long id, HttpServletRequest request, RedirectAttributes redirectAttributes){
         User findUser = userRepository.findById(id);
         userRepository.authorize(findUser.getId());
-        model.addAttribute("user",findUser);
-        return "loginHome"; // loginHome으로 리다이렉트
+
+        HttpSession session = request.getSession(false);
+        //세션값 때문에, 값이 유지가 되는듯함.
+        if(session != null){
+            session.invalidate();
+        }
+
+        redirectAttributes.addFlashAttribute("user",findUser);
+        return "redirect:/"; // loginHome으로 리다이렉트
     }
 
 

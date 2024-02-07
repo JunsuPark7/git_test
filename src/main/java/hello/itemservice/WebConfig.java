@@ -1,5 +1,6 @@
 package hello.itemservice;
 
+import hello.itemservice.web.interceptor.AdminCheckInterceptor;
 import hello.itemservice.web.interceptor.LogInterceptor;
 import hello.itemservice.web.interceptor.LoginCheckInterceptor;
 import org.springframework.context.annotation.Configuration;
@@ -20,9 +21,13 @@ public class WebConfig implements WebMvcConfigurer {
                 .addPathPatterns("/**")
                 .excludePathPatterns(
                         "/", "/users/add", "/login", "/logout", "/users/find", "/users/password",
-                        "/css/**","/js/**", "/*.ico", "/error", "/layout",
-                        "/index2.html", "/basic/**"
+                        "/css/**","/js/**", "/*.ico", "/img/**", "/html/**",
+                        "/error", "/layout"
                 );
+
+        registry.addInterceptor(new AdminCheckInterceptor())
+                .order(1)
+                .addPathPatterns("/admin/members");
     }
 
 
