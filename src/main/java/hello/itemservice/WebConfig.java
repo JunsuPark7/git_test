@@ -16,6 +16,8 @@ public class WebConfig implements WebMvcConfigurer {
                 .addPathPatterns("/**")
                 .excludePathPatterns("/css/**", "/*.ico", "/error");
 
+
+        //로그인 인증 권한
         registry.addInterceptor(new LoginCheckInterceptor())
                 .order(1)
                 .addPathPatterns("/**")
@@ -25,6 +27,7 @@ public class WebConfig implements WebMvcConfigurer {
                         "/error", "/layout"
                 );
 
+        //Admin, user 인증 권한
         registry.addInterceptor(new AdminCheckInterceptor())
                 .order(1)
                 .addPathPatterns("/admin/members");

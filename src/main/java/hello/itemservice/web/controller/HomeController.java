@@ -24,6 +24,7 @@ public class HomeController {
             @ModelAttribute("loginForm") LoginForm form,
             Model model
     ){
+
         if(loginUser == null){
             return "login";
         }

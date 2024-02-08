@@ -68,17 +68,12 @@ public class UserController {
         }
 
         User loginUser = loginUserOptional.get();
-        log.info("userloginoptional777={}",loginUser);
-
-        //로그인 유저의 값을 다른 페이지로 넘긴다.?
-        //로그인 비밀번호만 다시 설정.
         redirectAttributes.addFlashAttribute("user",loginUser);
         return "redirect:/users/password";
     }
 
     @GetMapping("/password")
     public String findPassword(@ModelAttribute("user") User user){
-        log.info("user111 :{}",user);
         return "users/passwordForm";
     }
 
@@ -105,7 +100,7 @@ public class UserController {
         userRepository.authorize(findUser.getId());
 
         HttpSession session = request.getSession(false);
-        //세션값 때문에, 값이 유지가 되는듯함.
+
         if(session != null){
             session.invalidate();
         }
