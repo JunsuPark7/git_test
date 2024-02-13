@@ -1,0 +1,66 @@
+body {
+	font-family:'Noto Sans KR',sans-serif;
+	background-color:#F0F2F5;
+}
+.header {
+	background-color:#60A619;
+	color:white;
+	padding:20px;
+	text-align:center;
+	font-size:20px;
+	font-weight:700;
+}
+.menu-bar {
+	background-color:#60A619;
+	color:white;
+	padding:10px 20px;
+	display:flex;
+	justify-content:start;
+	font-size:16px;
+	border-top:1px solid #9de356;
+	width:100%;
+}
+.menu-bar span {
+	background:#009678;
+	color:#ccc;
+	border-radius:10px;
+	padding:4px 14px;
+	margin:5px 2px;
+}
+.menu-bar .menu-active {
+	color:white;
+}
+.menu-item {
+	background-color:white;
+	border:none;
+	padding:15px 20px;
+	margin-bottom:2px;
+	font-size:16px;
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+}
+.menu-icon {
+	color:#37871C;
+	margin-right:10px;
+}
+.footer {
+	position:fixed;
+	bottom:0;
+	width:100%;
+	background-color:white;
+	border-top:1px solid #ccc;
+	padding:10px 0;
+}
+.footer-icon {
+	text-align:center;
+	color:#6c757d;
+	font-size:20px;
+}
+.footer-icon.active {
+	color:#37871C;
+	font-weight:bold;
+}
+.footer-text {
+	font-size: 12px;
+}

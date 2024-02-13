@@ -11,26 +11,25 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry){
-        registry.addInterceptor(new LogInterceptor())
-                .order(1)
-                .addPathPatterns("/**")
-                .excludePathPatterns("/css/**", "/*.ico", "/error");
-
+//        registry.addInterceptor(new LogInterceptor())
+//                .order(1)
+//                .addPathPatterns("/**")
+//                .excludePathPatterns("/css/**", "/*.ico", "/error");
 
         //로그인 인증 권한
-        registry.addInterceptor(new LoginCheckInterceptor())
-                .order(1)
-                .addPathPatterns("/**")
-                .excludePathPatterns(
-                        "/", "/users/add", "/login", "/logout", "/users/find", "/users/password",
-                        "/css/**","/js/**", "/*.ico", "/img/**", "/html/**",
-                        "/error", "/layout"
-                );
+//        registry.addInterceptor(new LoginCheckInterceptor())
+//                .order(1)
+//                .addPathPatterns("/**")
+//                .excludePathPatterns(
+//                        "/", "/users/add", "/login", "/logout", "/users/find", "/users/password",
+//                        "/css/**","/js/**", "/*.ico", "/img/**", "/html/**",
+//                        "/error", "/layout"
+//                );
 
         //Admin, user 인증 권한
-        registry.addInterceptor(new AdminCheckInterceptor())
-                .order(1)
-                .addPathPatterns("/admin/members");
+//        registry.addInterceptor(new AdminCheckInterceptor())
+//                .order(1)
+//                .addPathPatterns("/admin/members");
     }
 
 

@@ -18,7 +18,7 @@ public class HomeController {
 
 
 
-    @GetMapping("/")
+//    @GetMapping("/")
     public String homeLoginV3Spring(
             @SessionAttribute(name = SessionConst.LOGIN_USER, required = false) User loginUser,
             @ModelAttribute("loginForm") LoginForm form,
@@ -34,7 +34,25 @@ public class HomeController {
         return "home";
     }
 
+    @GetMapping("/")
+    public String homeControl(){
+        return "user/userHome";
+    }
+
+    @GetMapping("/searchApp")
+    public String searchControl(){
+        return "user/userSearch";
+    }
 
 
+    @GetMapping("/departmentApp")
+    public String departmentControl(){
+        return "user/userDepartment";
+    }
+
+    @GetMapping("/detailApp")
+    public String detailControl(){
+        return "user/userDetail";
+    }
 
 }
