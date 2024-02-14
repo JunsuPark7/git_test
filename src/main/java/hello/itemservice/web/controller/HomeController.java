@@ -39,20 +39,25 @@ public class HomeController {
         return "user/userHome";
     }
 
-    @GetMapping("/searchApp")
-    public String searchControl(){
+    @GetMapping("/userSearch")
+    public String userSearch(){
         return "user/userSearch";
     }
 
 
-    @GetMapping("/departmentApp")
-    public String departmentControl(){
+    @GetMapping("/userDepartment")
+    public String userDepartment(){
         return "user/userDepartment";
     }
 
-    @GetMapping("/detailApp")
-    public String detailControl(){
+    @GetMapping("/userDetail")
+    public String userDetail(){
         return "user/userDetail";
+    }
+
+    @GetMapping("/userDetailForm")
+    public String userDetailForm(){
+        return "user/userDetailForm";
     }
 
 }

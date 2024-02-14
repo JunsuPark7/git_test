@@ -1,0 +1,73 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>
+        수정폼
+    </title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet"/>
+    <link th:href="@{/css/user/userDetailForm.css}" href="/css/common.css" rel="stylesheet">
+</head>
+<body>
+<!--<div class="profile-header">-->
+<!--    <img alt="Placeholder image for profile picture" class="profile-image" height="100" src="https://placehold.co/80x80" width="100"/>-->
+<!--    <div class="profile-name">-->
+<!--        박준수-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="profile-header">
+    <div class="profile-image-container">
+        <img alt="Placeholder image for profile picture" class="profile-image" height="150" src="https://placehold.co/150x150" width="150"/>
+        <button class="profile-edit-button">수정</button>
+    </div>
+    <div class="profile-name">박준수</div>
+</div>
+
+
+<form action="">
+    <div class="profile-container mt-3 profile-info">
+<!--        <div class="row profile">-->
+<!--            <div class="col-12 info-key">박준수</div>-->
+<!--        </div>-->
+        <div class="row profile">
+            <div class="col-3 info-key">소속부서</div>
+            <div class="col-9 info-value"><input type="text" value="전라남도 광양시청 전력체제기획단"></div>
+        </div>
+        <div class="row profile">
+            <div class="col-3 info-key">직위</div>
+            <div class="col-9 info-value"><input type="text" value="-"></div>
+        </div>
+        <div class="row profile">
+            <div class="col-3 info-key">직책</div>
+            <div class="col-9 info-value"><input type="text" value="주무관"></div>
+        </div>
+        <div class="row profile">
+            <div class="col-3 info-key">업무</div>
+            <div class="col-9 info-value"><input type="text" value="전력체제기획단 사무"></div>
+        </div>
+        <div class="row profile">
+            <div class="col-3 info-key">구내전화</div>
+            <div class="col-9 info-value"><input type="text" value="061-286-5563"></div>
+        </div>
+        <div class="row profile">
+            <div class="col-3 info-key">휴대전화</div>
+            <div class="col-9 info-value"><input type="text" value="010-8846-0324"></div>
+        </div>
+        <div class="row profile">
+            <div class="col-3 info-key">이메일</div>
+            <div class="col-9 info-value"><input type="email" value="seonhee0324@korea.kr"></div>
+        </div>
+        <button class="mobile-button">수정요청</button>
+    </div>
+
+
+</form>
+
+<div class="footer-menu">
+    <img alt="Home icon" height="25" src="https://placehold.co/25x25" width="25"/>
+    <img alt="List icon" height="25" src="https://placehold.co/25x25" width="25"/>
+    <img alt="User icon" height="25" src="https://placehold.co/25x25" width="25"/>
+</div>
+</body>
+</html>
